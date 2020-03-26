@@ -1,5 +1,4 @@
-
-![Actions Release](![Actions Release](https://github.com/nanzm/errlock/workflows/Actions%20Release/badge.svg?branch=master))
+![Actions Release](https://github.com/nanzm/errlock/workflows/Actions%20Release/badge.svg?branch=master)
 # errlock 
 
 随着项目的扩大，更多开发人员加入，让错误异常的产生变得可度量，可监控，错误监控越来越重要
