@@ -1,0 +1,85 @@
+{
+  "name": "errlock",
+  "description": "bug report, watch errors 前端错误上报监控 打点",
+  "version": "0.0.1",
+  "keywords": [
+    "web",
+    "error",
+    "bug",
+    "report"
+  ],
+  "main": "dist/errlock.cjs.js",
+  "module": "dist/errlock.esm.js",
+  "browser": "dist/errlock.umd.js",
+  "author": "nanzm",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nanzm/reporter.git"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production rollup -c",
+    "dev": "rollup -c -w",
+    "pretest": "npm run build",
+    "test": "jest",
+    "ci": "npm run test",
+    "commit": "git add . && git cz",
+    "semantic-release": "semantic-release"
+  },
+  "dependencies": {
+    "core-js": "^3.6.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "@types/jest": "^25.1.4",
+    "babel-jest": "^25.2.0",
+    "colors": "^1.4.0",
+    "cz-conventional-changelog": "^3.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue-libs": "^4.0.0",
+    "husky": "^4.2.3",
+    "jest": "^25.2.0",
+    "rollup": "^1.29.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "semantic-release": "^17.0.4"
+  },
+  "files": [
+    "dist"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "release": {
+    "branche": "master",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
