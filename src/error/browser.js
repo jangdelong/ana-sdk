@@ -69,12 +69,13 @@ function windowOnError () {
       OriginWindowError && OriginWindowError.apply(window, arguments)
     }
 
-    return false
+    return true
   }
 }
 
 function windowListenerError () {
   window.addEventListener('error', function (event) {
+    event.preventDefault()
     if (event) {
       const target = event.target || event.srcElement
       const isElementTarget = target instanceof HTMLScriptElement || target instanceof HTMLLinkElement || target instanceof HTMLImageElement
@@ -94,6 +95,7 @@ function windowListenerError () {
 
 function windowUnhandledRejectionError () {
   window.addEventListener('unhandledrejection', function (event) {
+    event.preventDefault()
     if (event) {
       const reason = event.reason
       formatError({
