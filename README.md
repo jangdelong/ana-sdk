@@ -78,4 +78,4 @@ document.body.appendChild(script);
 
 # 交流
 ### 微信
-<img src="https://img3.beikewen.com/tmp/wx.jpeg" width="200" alt="">
+<img src="https://raw.githubusercontent.com/nanzm/errlock/master/wx.jpeg" width="200" alt="">
