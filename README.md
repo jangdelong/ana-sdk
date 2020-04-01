@@ -72,3 +72,10 @@ document.body.appendChild(script);
 
 // <script src="http://test/main.js" crossorigin></script>
 ```
+
+
+
+
+# 交流
+### 微信
+<img src="https://img3.beikewen.com/tmp/wx.jpeg" width="200" alt="">
