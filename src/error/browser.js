@@ -35,7 +35,7 @@ function windowConsole () {
     formatError({
       msg: 'consoleError',
       desc: JSON.stringify(args.join(',')),
-      tag: 'js'
+      tag: 'console.error'
     })
 
     originConsoleError && originConsoleError.apply(window, arguments)
@@ -101,7 +101,7 @@ function windowUnhandledRejectionError () {
       formatError({
         msg: 'unhandledrejection',
         desc: reason,
-        tag: 'js'
+        tag: 'promise'
       })
     }
   }, true)
@@ -170,7 +170,7 @@ function windowFetchError () {
           formatError({
             msg: args[0],
             desc: JSON.stringify(res),
-            tag: 'ajax'
+            tag: 'fetch'
           })
         }
 
@@ -183,7 +183,7 @@ function windowFetchError () {
             message: error.message,
             stack: error.stack
           }),
-          tag: 'ajax'
+          tag: 'fetch'
         })
         throw error
       })
@@ -191,6 +191,11 @@ function windowFetchError () {
 }
 
 function formatError (data) {
+  const path = window.location.href
+  data.path = path
+  data.appid = config.appId
+  data.uid = config.uid
+
   imgReport(config.imgUrl, data)
 }
 
