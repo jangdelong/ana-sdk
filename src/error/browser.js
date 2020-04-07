@@ -8,21 +8,25 @@ export function sendError (err) {
 }
 
 export function catchBrowserError () {
-  // console.error
-  windowConsole()
+  try {
+    // console.error
+    windowConsole()
 
-  // 只能监听到js执行的错误，无法监听资源加载的错误
-  windowOnError()
+    // 只能监听到js执行的错误，无法监听资源加载的错误
+    windowOnError()
 
-  // 可以监听到js执行的错误，和资源加载的错误
-  windowListenerError()
+    // 可以监听到js执行的错误，和资源加载的错误
+    windowListenerError()
 
-  // promise
-  windowUnhandledRejectionError()
+    // promise
+    windowUnhandledRejectionError()
 
-  // 数据请求
-  windowAjaxError()
-  windowFetchError()
+    // 数据请求
+    windowAjaxError()
+    windowFetchError()
+  } catch (e) {
+    console.error(e)
+  }
 }
 
 function windowConsole () {
@@ -140,6 +144,7 @@ function windowAjaxError () {
       this['addEventListener']('error', _handleEvent)
       this['addEventListener']('load', _handleEvent)
       this['addEventListener']('abort', _handleEvent)
+      this['addEventListener']('timeout', _handleEvent)
     } else {
       const originStateChange = this['onreadystatechange']
       this['onreadystatechange'] = function (event) {

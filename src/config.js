@@ -9,8 +9,7 @@ export const config = {
 }
 
 export function resolveConfig (cfg) {
-  const uid = genUid()
-  cfg.uid = uid
+  cfg.uid = genUid()
 
   // 合并
   Object.assign(config, cfg)
