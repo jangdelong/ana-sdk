@@ -55,7 +55,7 @@ export function windowAjaxError () {
           transformError({
             tag: tag.AJAX_ERROR,
             msg: `event:${type.toUpperCase()} ${responseURL} ${status}`,
-            stack: JSON.stringify({
+            desc: JSON.stringify({
               statusText: statusText,
               apiUrl: responseURL,
               response: response
@@ -73,7 +73,7 @@ export function windowAjaxError () {
         transformError({
           tag: tag.AJAX_ERROR,
           msg: msg,
-          stack: JSON.stringify({
+          desc: JSON.stringify({
             statusText: type,
             apiUrl: attr.apiUrl,
             method: attr.method,

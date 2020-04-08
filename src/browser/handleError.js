@@ -12,7 +12,7 @@ export function windowOnError () {
       lineno,
       colno,
       msg,
-      stack: error && error.stack || ''
+      desc: error && error.stack || ''
     })
 
     if (OriginWindowError && isFunction(OriginWindowError)) {
@@ -40,7 +40,7 @@ export function windowListenerError () {
         lineno: '',
         colno: '',
         msg: e.target.outerHTML,
-        stack: ''
+        desc: ''
       })
     }
   }, true)
@@ -60,7 +60,7 @@ export function windowUnhandledRejectionError () {
         lineno: lineNo,
         colno: colNo,
         msg: msg,
-        stack: stack
+        desc: stack
       })
     }
   }, true)

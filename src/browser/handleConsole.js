@@ -24,7 +24,7 @@ export function windowConsole () {
       lineno: lineNo,
       colno: colNo,
       msg: msg.join(','),
-      stack: `console.log(${msg.join(',')})`
+      desc: `console.log(${msg.join(',')})`
     })
 
     originConsoleError.apply(window, arguments)
