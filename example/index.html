@@ -17,7 +17,8 @@
             margin-bottom: 20px;
         }
     </style>
-    <script src="https://img3.beikewen.com/micro-lectures/jslib/errlock.umd.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script>
+    <script src="../dist/errlock.umd.js"></script>
     <script>
       errlock.init({
         appId: '1'
@@ -30,47 +31,11 @@
 <button id="btn2">错误promise</button>
 <button id="btn3">重写console.error</button>
 <button id="btn4">错误RangeError</button>
-<button id="btn5">错误img res</button>
+<button id="btn5">script res load error</button>
 <button id="btn6">错误URIError</button>
+<button id="btn7">ajax error</button>
+<button id="btn8">ajax timeout</button>
 
-
-<img id="img" alt="">
-
-<script>
-  var btn1 = document.getElementById('btn1')
-  btn1.onclick = function (e) {
-    var student = { info: null }
-    var name = student.info.name
-  }
-
-  var btn2 = document.getElementById('btn2')
-  btn2.onclick = function (e) {
-    Promise.reject(new Error('not work reject'))
-  }
-
-  var btn3 = document.getElementById('btn3')
-  btn3.onclick = function (e) {
-    console.error('错误')
-  }
-
-  var btn4 = document.getElementById('btn4')
-  btn4.onclick = function (e) {
-    new Array(-1)
-    (1.2).toFixed(21)
-  }
-
-  var btn5 = document.getElementById('btn5')
-  btn5.onclick = function (e) {
-    document.getElementById('img').src = 'https://www.google.com/1.png'
-  }
-
-  var btn6 = document.getElementById('btn6')
-  btn6.onclick = function (e) {
-    encodeURI('\uD800')
-    encodeURIComponent('\uD800')
-    decodeURI('%')
-    decodeURIComponent('%')
-  }
-</script>
+<script src="./index.js"></script>
 </body>
 </html>

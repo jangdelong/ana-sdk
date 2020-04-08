@@ -1,5 +1,5 @@
 import { sendEvent } from './stat/index'
-import { sendError, catchBrowserError } from './error/browser'
+import { sendError, catchBrowserError } from './browser/index'
 import { warn } from './helper'
 import { config, resolveConfig } from './config'
 

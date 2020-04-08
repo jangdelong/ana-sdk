@@ -295,13 +295,13 @@ export function uuid4 () {
 
     return (
       pad(arr[0]) +
-			pad(arr[1]) +
-			pad(arr[2]) +
-			pad(arr[3]) +
-			pad(arr[4]) +
-			pad(arr[5]) +
-			pad(arr[6]) +
-			pad(arr[7])
+      pad(arr[1]) +
+      pad(arr[2]) +
+      pad(arr[3]) +
+      pad(arr[4]) +
+      pad(arr[5]) +
+      pad(arr[6]) +
+      pad(arr[7])
     )
   } else {
     // http://stackoverflow.com/questions/105034/how-to-create-a-guid-uuid-in-javascript/2117523#2117523
@@ -332,7 +332,7 @@ export function htmlTreeAsString (elem) {
     //   (ignore this limit if we are on the first iteration)
     if (
       nextStr === 'html' ||
-			(height > 1 && len + out.length * sepLength + nextStr.length >= MAX_OUTPUT_LEN)
+      (height > 1 && len + out.length * sepLength + nextStr.length >= MAX_OUTPUT_LEN)
     ) {
       break
     }
@@ -402,4 +402,35 @@ export function safeJoin (input, delimiter) {
   }
 
   return output.join(delimiter)
+}
+
+export function getStackTrace () {
+  const obj = {}
+  Error.captureStackTrace(obj, getStackTrace)
+  return obj.stack
+}
+
+export function getLineColNum (stack) {
+  if (!stack) return
+
+  const regUrl = /\(([^)]*)\)/
+  const a = stack.split('\n')
+
+  let last, fileUrl, b, lineNo, colNo
+
+  // 最后一条堆栈信息
+  if (a && a.length > 0) last = a.pop()
+
+  const res = last.match(regUrl)
+
+  // 第二条结果
+  if (res && res.length >= 1) fileUrl = res[1]
+
+  if (fileUrl) b = fileUrl.split(':')
+
+  if (b && b.length > 2) {
+    colNo = b.pop()
+    lineNo = b.pop()
+  }
+  return { lineNo, colNo, fileUrl }
 }
