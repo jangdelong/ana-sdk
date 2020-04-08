@@ -1,5 +1,5 @@
 import { sendEvent } from './stat/index'
-import { sendError, catchBrowserError } from './browser/index'
+import { sendError, attachUser, catchBrowserError } from './browser/index'
 import { warn } from './helper'
 import { config, resolveConfig } from './config'
 
@@ -17,6 +17,8 @@ function init (opts) {
 
 export default {
   init,
+
+  attachUser,
 
   // 打点
   stat: sendEvent,

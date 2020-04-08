@@ -28,3 +28,6 @@ export function catchBrowserError () {
   }
 }
 
+export function attachUser (user) {
+  console.warn('attachUser', user)
+}
