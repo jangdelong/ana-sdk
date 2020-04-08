@@ -1,8 +1,8 @@
 export const tag = {
-  consoleError: 'consoleError',
-  loadResError: 'loadResError',
-  jsError: 'jsError',
-  unHandledRejection: 'UnHandledRejection',
-  ajax: 'ajax',
-  fetch: 'fetch'
+  CONSOLE_ERROR: 'consoleError',
+  LOAD_RES_ERROR: 'loadResError',
+  JS_ERROR: 'jsError',
+  UNHANDLED_REJECTION: 'UnHandledRejection',
+  AJAX_ERROR: 'ajaxError',
+  FETCH_ERROR: 'fetchError'
 }

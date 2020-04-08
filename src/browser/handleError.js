@@ -1,12 +1,13 @@
 import { getLineColNum, isFunction } from '../helper'
 import { transformError } from './report'
+import { tag } from '../constant'
 
 export function windowOnError () {
   const OriginWindowError = window.onerror
   window.onerror = function (msg, fileUrl, lineno,
     colno, error) {
     transformError({
-      tag: 'jsCodeError',
+      tag: tag.JS_ERROR,
       fileUrl,
       lineno,
       colno,
@@ -34,7 +35,7 @@ export function windowListenerError () {
       // js css 资源加载错误
       const url = target.src || target.href
       transformError({
-        tag: 'loadResError',
+        tag: tag.LOAD_RES_ERROR,
         fileUrl: url,
         msg: event.target.outerHTML,
         stack: ''
