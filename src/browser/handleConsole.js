@@ -9,7 +9,7 @@ export function windowConsole () {
     const args = [].slice.call(arguments)
 
     const stackTrace = getStackTrace()
-    const { lineNo, colNo } = getLineColNum(stackTrace)
+    const { lineNo, colNo, fileUrl } = getLineColNum(stackTrace)
 
     const msg = args.map((item) => {
       if (isError(item)) {
@@ -20,7 +20,7 @@ export function windowConsole () {
 
     transformError({
       tag: 'consoleError',
-      fileUrl: '',
+      fileUrl: fileUrl,
       lineno: lineNo,
       colno: colNo,
       msg: msg.join(','),

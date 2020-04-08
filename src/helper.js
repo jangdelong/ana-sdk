@@ -405,13 +405,14 @@ export function safeJoin (input, delimiter) {
 }
 
 export function getStackTrace () {
+  if (!Error || !Error.captureStackTrace) return ''
   const obj = {}
   Error.captureStackTrace(obj, getStackTrace)
   return obj.stack
 }
 
 export function getLineColNum (stack) {
-  if (!stack) return
+  if (!stack) return {}
 
   const regUrl = /\(([^)]*)\)/
   const a = stack.split('\n')
