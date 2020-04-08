@@ -65,6 +65,8 @@ export function transformError (data) {
   data.appid = config.appId
   data.uid = config.uid
 
-  imgReport(config.imgUrl, data)
+  setTimeout(() => {
+    console.log('---------errlock-拦截-------' + Date.now())
+    imgReport(config.imgUrl, data)
+  }, 20)
 }
-

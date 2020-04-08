@@ -1,4 +1,4 @@
-import { windowAjaxError, windowFetchError } from './handleAjax'
+import { windowAjaxError } from './handleAjax'
 import { windowConsole } from './handleConsole'
 import { windowListenerError, windowOnError, windowUnhandledRejectionError } from './handleError'
 
@@ -23,7 +23,6 @@ export function catchBrowserError () {
 
     // 数据请求
     windowAjaxError()
-    windowFetchError()
   } catch (e) {
     console.error(e)
   }

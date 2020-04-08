@@ -24,11 +24,11 @@ export function windowOnError () {
 }
 
 export function windowListenerError () {
-  window.addEventListener('error', function (event) {
-    event.preventDefault()
+  window.addEventListener('error', function (e) {
+    e.preventDefault()
 
-    if (event) {
-      const target = event.target || event.srcElement
+    if (e) {
+      const target = e.target || e.srcElement
       const isElementTarget = target instanceof HTMLScriptElement || target instanceof HTMLLinkElement
       if (!isElementTarget) return
 
@@ -37,7 +37,9 @@ export function windowListenerError () {
       transformError({
         tag: tag.LOAD_RES_ERROR,
         fileUrl: url,
-        msg: event.target.outerHTML,
+        lineno: '',
+        colno: '',
+        msg: e.target.outerHTML,
         stack: ''
       })
     }
@@ -45,20 +47,20 @@ export function windowListenerError () {
 }
 
 export function windowUnhandledRejectionError () {
-  window.addEventListener('unhandledrejection', function (event) {
-    event.preventDefault()
-    if (event && event.reason && event.reason.stack) {
-      const msg = event.reason.message
-      const stack = event.reason.stack
+  window.addEventListener('unhandledrejection', function (e) {
+    e.preventDefault()
+    if (e && e.reason && e.reason.stack) {
+      const msg = e.reason.message
+      const stack = e.reason.stack
       const { lineNo, colNo, fileUrl } = getLineColNum(stack)
 
       transformError({
-        tag: 'unhandledrejection',
-        fileUrl,
+        tag: tag.UNHANDLED_REJECTION_ERROR,
+        fileUrl: fileUrl,
         lineno: lineNo,
         colno: colNo,
-        msg,
-        stack
+        msg: msg,
+        stack: stack
       })
     }
   }, true)

@@ -20,6 +20,7 @@ export function windowConsole () {
 
     transformError({
       tag: 'consoleError',
+      fileUrl: '',
       lineno: lineNo,
       colno: colNo,
       msg: msg.join(','),
