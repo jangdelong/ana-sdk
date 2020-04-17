@@ -1,6 +1,7 @@
 import { sendEvent } from './stat/index'
 import { sendError, attachUser, catchBrowserError } from './browser/index'
-import { warn } from './helper'
+import { reportUAInfo } from './browser/uaParse'
+import { warn, error } from './helper'
 import { config, resolveConfig } from './config'
 
 function init (opts) {
@@ -12,7 +13,18 @@ function init (opts) {
   resolveConfig(opts)
 
   // 捕获错误
-  if (config.isBrowser) { catchBrowserError() }
+  if (config.isBrowser) {
+    if (!window) {
+      error('not in Browser')
+      return
+    }
+
+    // 浏览器信息
+    reportUAInfo()
+
+    // 捕获错误
+    catchBrowserError()
+  }
 }
 
 export default {
