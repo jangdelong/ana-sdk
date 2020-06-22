@@ -25,33 +25,33 @@
 
     </style>
     <script src="https://cdn.bootcss.com/axios/0.19.2/axios.min.js"></script>
-    <script src="../dist/errlock.umd.js"></script>
+    <script src="../lib/index.umd.js"></script>
     <script>
-      errlock.init({
-        appId: '1'
-      })
+			errlock.init({
+				appId: '1'
+			})
     </script>
 </head>
 <body>
 <div>
     <button id="btn1">错误undefined</button>
     <script>
-      var btn1 = document.getElementById('btn1')
-      btn1.onclick = function (e) {
-        var student = { info: null }
-        var name = student.info.name
-        console.log(name)
-      }
+			var btn1 = document.getElementById('btn1')
+			btn1.onclick = function (e) {
+				var student = { info: null }
+				var name = student.info.name
+				console.log(name)
+			}
     </script>
 </div>
 
 <div>
     <button id="btn2">错误promise</button>
     <script>
-      var btn2 = document.getElementById('btn2')
-      btn2.onclick = function (e) {
-        Promise.reject(new Error('not work reject'))
-      }
+			var btn2 = document.getElementById('btn2')
+			btn2.onclick = function (e) {
+				Promise.reject(new Error('not work reject'))
+			}
     </script>
 </div>
 
@@ -59,21 +59,21 @@
 <div>
     <button id="btn3">重写console.error</button>
     <script>
-      var btn3 = document.getElementById('btn3')
-      btn3.onclick = function (e) {
-        // console.error('错误', { test: 'a', age: 19 })
-        console.error(new Error('error sj'))
-      }
+			var btn3 = document.getElementById('btn3')
+			btn3.onclick = function (e) {
+				// console.error('错误', { test: 'a', age: 19 })
+				console.error(new Error('error sj'))
+			}
     </script>
 </div>
 
 <div>
     <button id="btn4">错误RangeError</button>
     <script>
-      var btn4 = document.getElementById('btn4')
-      btn4.onclick = function (e) {
-        new Array(-1)(1.2).toFixed(21)
-      }
+			var btn4 = document.getElementById('btn4')
+			btn4.onclick = function (e) {
+				new Array(-1)(1.2).toFixed(21)
+			}
     </script>
 </div>
 
@@ -81,16 +81,16 @@
 <div>
     <button id="btn5">script res load error</button>
     <script>
-      var btn5 = document.getElementById('btn5')
-      btn5.onclick = function (e) {
-        console.log('--------------------------------')
-        var ga = document.createElement('script')
-        ga.type = 'text/javascript'
-        ga.async = true
-        ga.src = 'https://post/5bcdaed7e51d457a8254e1b7a.js'
-        var s = document.getElementsByTagName('script')[0]
-        s.parentNode.insertBefore(ga, s)
-      }
+			var btn5 = document.getElementById('btn5')
+			btn5.onclick = function (e) {
+				console.log('--------------------------------')
+				var ga = document.createElement('script')
+				ga.type = 'text/javascript'
+				ga.async = true
+				ga.src = 'https://post/5bcdaed7e51d457a8254e1b7a.js'
+				var s = document.getElementsByTagName('script')[0]
+				s.parentNode.insertBefore(ga, s)
+			}
     </script>
     <br/>
 </div>
@@ -98,13 +98,13 @@
 <div>
     <button id="btn6">错误URIError</button>
     <script>
-      var btn6 = document.getElementById('btn6')
-      btn6.onclick = function (e) {
-        encodeURI('\uD800')
-        encodeURIComponent('\uD800')
-        decodeURI('%')
-        decodeURIComponent('%')
-      }
+			var btn6 = document.getElementById('btn6')
+			btn6.onclick = function (e) {
+				encodeURI('\uD800')
+				encodeURIComponent('\uD800')
+				decodeURI('%')
+				decodeURIComponent('%')
+			}
     </script>
     <br>
 </div>
@@ -112,35 +112,35 @@
 <div>
     <button id="btn7">ajax error</button>
     <script>
-      var btn7 = document.getElementById('btn7')
-      btn7.onclick = function (e) {
-        axios.get('https://www.nancode.cn/api/test/error', { params: { name: 'mike' } }).catch(function (e) {
-        })
-      }
+			var btn7 = document.getElementById('btn7')
+			btn7.onclick = function (e) {
+				axios.get('https://www.nancode.cn/api/test/error', { params: { name: 'mike' } }).catch(function (e) {
+				})
+			}
     </script>
 </div>
 
 <div>
     <button id="btn8">ajax timeout</button>
     <script>
-      var btn8 = document.getElementById('btn8')
-      btn8.onclick = function (e) {
-        axios.get('https://www.nancode.cn/api/test/timeout', {
-          timeout: 1800
-        }).catch(function (e) {
-        })
-      }
+			var btn8 = document.getElementById('btn8')
+			btn8.onclick = function (e) {
+				axios.get('https://www.nancode.cn/api/test/timeout', {
+					timeout: 1800
+				}).catch(function (e) {
+				})
+			}
     </script>
 </div>
 
 <div>
     <button id="btn9">ajax unknow url error</button>
     <script>
-      var btn9 = document.getElementById('btn9')
-      btn9.onclick = function (e) {
-        axios.post('https://www.ddnancode.cn/api/test/error', { like: 'play games' }).catch(function (e) {
-        })
-      }
+			var btn9 = document.getElementById('btn9')
+			btn9.onclick = function (e) {
+				axios.post('https://www.ddnancode.cn/api/test/error', { like: 'play games' }).catch(function (e) {
+				})
+			}
     </script>
     <br/>
 </div>

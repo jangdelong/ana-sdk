@@ -1,9 +1,9 @@
 module.exports = {
-  env: {
-    test: {
-      'plugins': ['@babel/plugin-transform-modules-commonjs']
-    }
-  },
+  // env: {
+  //   test: {
+  //     'plugins': ['@babel/plugin-transform-modules-commonjs'],
+  //   },
+  // },
   presets: [
     [
       '@babel/preset-env',
@@ -14,18 +14,18 @@ module.exports = {
         targets: {
           browsers: [
             'last 10 versions',
-            'ie > 9'
-          ]
-        }
-      }
-    ]
+            'ie > 11',
+          ],
+        },
+      },
+    ],
   ],
   plugins: [
     [
-      '@babel/plugin-transform-runtime'
-    ]
+      '@babel/plugin-transform-runtime',
+    ],
   ],
   ignore: [
-    'node_modules/**'
-  ]
+    'node_modules/**',
+  ],
 }

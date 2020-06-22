@@ -1,3 +1,5 @@
-dist
-example
-demo.js
+dist/
+lib/
+node_modules/
+public/
+config/
